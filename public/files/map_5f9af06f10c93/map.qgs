@@ -1,0 +1,543 @@
+<?xml version="1.0"?>
+<!DOCTYPE qgis PUBLIC "http://mrcc.com/qgis.dtd" "SYSTEM">
+<qgis projectname="" version="3.4.15-Madeira">
+  <homePath path=""/>
+  <title/>
+  <autotransaction active="0"/>
+  <evaluateDefaultValues active="0"/>
+  <trust active="0"/>
+  <projectCrs>
+    <spatialrefsys>
+      <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+      <srsid>3857</srsid>
+      <srid>3857</srid>
+      <authid>EPSG:3857</authid>
+      <description>WGS 84 / Pseudo-Mercator</description>
+      <projectionacronym>merc</projectionacronym>
+      <ellipsoidacronym>WGS84</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </projectCrs>
+  
+  <snapping-settings mode="2" unit="1" type="1" enabled="0" intersection-snapping="0" tolerance="12">
+    <individual-layer-settings/>
+  </snapping-settings>
+  <relations/>
+  <mapcanvas name="theMapCanvas" annotationsVisible="1">
+    <units>meters</units>
+    <extent>
+      <xmin>-1700275.78059889585711062</xmin>
+      <ymin>4480043.19888016115874052</ymin>
+      <xmax>2379162.87285239808261395</xmax>
+      <ymax>7109966.1688712490722537</ymax>
+    </extent>
+    <rotation>0</rotation>
+    <destinationsrs>
+      <spatialrefsys>
+        <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+        <srsid>3857</srsid>
+        <srid>3857</srid>
+        <authid>EPSG:3857</authid>
+        <description>WGS 84 / Pseudo-Mercator</description>
+        <projectionacronym>merc</projectionacronym>
+        <ellipsoidacronym>WGS84</ellipsoidacronym>
+        <geographicflag>false</geographicflag>
+      </spatialrefsys>
+    </destinationsrs>
+    <rendermaptile>0</rendermaptile>
+  </mapcanvas>
+  <projectModels/>
+  <legend updateDrawingOrder="true"/>
+  <mapViewDocks/>
+  <mapViewDocks3D/>
+  <projectlayers><maplayer refreshOnNotifyEnabled="0" simplifyDrawingTol="1" type="vector" simplifyAlgorithm="0" simplifyLocal="1" readOnly="0" hasScaleBasedVisibilityFlag="0" maxScale="0" minScale="1e+08" styleCategories="AllStyleCategories" labelsEnabled="0" refreshOnNotifyMessage="" simplifyDrawingHints="0" geometry="Point" autoRefreshTime="0" simplifyMaxScale="1" autoRefreshEnabled="0">
+      <extent>
+        <xmin>752283.60000000102445483</xmin>
+        <ymin>6563822.59999999962747097</ymin>
+        <xmax>886210.70000000298023224</xmax>
+        <ymax>6669418</ymax>
+      </extent>
+      <id>sdan_site20190322160323376</id>
+      <datasource>dbname='MTHD' host=localhost port=5432 user='postgres' password='1234' sslmode=disable key='gid' srid=2154 type=Point checkPrimaryKeyUnicity='1' table="data"."sdan_site" (geom) sql="gid" NOT IN(36, 37, 38, 39, 40, 41, 42, 45, 46, 47, 49, 50, 51, 52, 54, 164, 169, 170, 171, 172, 174, 175, 177, 
+178, 179, 183, 184, 280, 281, 282, 283, 482, 484, 485, 486, 487, 488, 498, 503, 505, 508,510, 518)</datasource>
+      <abstract>Sites strat&#xE9;giques SDAN 71</abstract>
+      <keywordList>
+        <value/>
+      </keywordList>
+      <attribution href="">SDAN71 - 2014</attribution>
+      <layername>Sites strat&#xE9;giques</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs</proj4>
+          <srsid>145</srsid>
+          <srid>2154</srid>
+          <authid>EPSG:2154</authid>
+          <description>RGF93 / Lambert-93</description>
+          <projectionacronym>lcc</projectionacronym>
+          <ellipsoidacronym>GRS80</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier/>
+        <parentidentifier/>
+        <language/>
+        <type/>
+        <title/>
+        <abstract/>
+        <contact>
+          <name/>
+          <organization/>
+          <position/>
+          <voice/>
+          <fax/>
+          <email/>
+          <role/>
+        </contact>
+        <links/>
+        <fees/>
+        <encoding/>
+        <crs>
+          <spatialrefsys>
+            <proj4/>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid/>
+            <description/>
+            <projectionacronym/>
+            <ellipsoidacronym/>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="" dimensions="2" maxz="0" minz="0" maxx="0" minx="0" miny="0" maxy="0"/>
+          <temporal>
+            <period>
+              <start/>
+              <end/>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="UTF-8">postgres</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="d&#xE9;faut">
+        <map-layer-style name="d&#xE9;faut"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <flags>
+        <Identifiable>1</Identifiable>
+        <Removable>1</Removable>
+        <Searchable>1</Searchable>
+      </flags>
+      <renderer-v2 type="singleSymbol" enableorderby="0" symbollevels="0" forceraster="0">
+        <symbols>
+          <symbol alpha="1" clip_to_extent="1" type="marker" name="0" force_rhr="0">
+            <layer locked="0" pass="0" class="SimpleMarker" enabled="1">
+              <prop k="angle" v="0"/>
+              <prop k="color" v="255,238,88,255"/>
+              <prop k="horizontal_anchor_point" v="1"/>
+              <prop k="joinstyle" v="bevel"/>
+              <prop k="name" v="star"/>
+              <prop k="offset" v="0,0"/>
+              <prop k="offset_map_unit_scale" v="3x:0,0,0,0,0,0"/>
+              <prop k="offset_unit" v="MM"/>
+              <prop k="outline_color" v="251,192,45,255"/>
+              <prop k="outline_style" v="solid"/>
+              <prop k="outline_width" v="0"/>
+              <prop k="outline_width_map_unit_scale" v="3x:0,0,0,0,0,0"/>
+              <prop k="outline_width_unit" v="MM"/>
+              <prop k="scale_method" v="diameter"/>
+              <prop k="size" v="4"/>
+              <prop k="size_map_unit_scale" v="3x:0,0,0,0,0,0"/>
+              <prop k="size_unit" v="MM"/>
+              <prop k="vertical_anchor_point" v="1"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option type="QString" value="" name="name"/>
+                  <Option name="properties"/>
+                  <Option type="QString" value="collection" name="type"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties>
+        <property value="0" key="embeddedWidgets/count"/>
+        <property key="variableNames"/>
+        <property key="variableValues"/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <SingleCategoryDiagramRenderer attributeLegend="1" diagramType="Histogram">
+        <DiagramCategory backgroundAlpha="255" width="15" backgroundColor="#ffffff" minimumSize="0" penWidth="0" scaleDependency="Area" diagramOrientation="Up" penAlpha="255" minScaleDenominator="-2.14748e+09" maxScaleDenominator="1e+08" height="15" sizeType="MM" enabled="0" sizeScale="3x:0,0,0,0,0,0" lineSizeType="MM" scaleBasedVisibility="0" lineSizeScale="3x:0,0,0,0,0,0" labelPlacementMethod="XHeight" penColor="#000000" opacity="1" barWidth="5" rotationOffset="270">
+          <fontProperties style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          <attribute field="" color="#000000" label=""/>
+        </DiagramCategory>
+      </SingleCategoryDiagramRenderer>
+      <DiagramLayerSettings obstacle="0" linePlacementFlags="2" priority="0" showAll="1" placement="0" dist="0" zIndex="0">
+        <properties>
+          <Option type="Map">
+            <Option type="QString" value="" name="name"/>
+            <Option name="properties"/>
+            <Option type="QString" value="collection" name="type"/>
+          </Option>
+        </properties>
+      </DiagramLayerSettings>
+      <geometryOptions geometryPrecision="0" removeDuplicateNodes="0">
+        <activeChecks/>
+        <checkConfiguration/>
+      </geometryOptions>
+      <fieldConfiguration>
+        <field name="gid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="id">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="statut">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="type">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="nom">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="adresse">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="insee">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="commune">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="source">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="evaluation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="debit">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="id_commune">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="id_phase">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option type="QString" value="0" name="IsMultiline"/>
+                <Option type="QString" value="0" name="UseHtml"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="gid" name="" index="0"/>
+        <alias field="id" name="" index="1"/>
+        <alias field="statut" name="Statut" index="2"/>
+        <alias field="type" name="Type" index="3"/>
+        <alias field="nom" name="Nom" index="4"/>
+        <alias field="adresse" name="Adresse" index="5"/>
+        <alias field="insee" name="INSEE" index="6"/>
+        <alias field="commune" name="Commune" index="7"/>
+        <alias field="source" name="Source" index="8"/>
+        <alias field="evaluation" name="Evaluation" index="9"/>
+        <alias field="debit" name="D&#xE9;bit" index="10"/>
+        <alias field="id_commune" name="" index="11"/>
+        <alias field="id_phase" name="" index="12"/>
+      </aliases>
+      <excludeAttributesWMS>
+        <attribute>gid</attribute>
+        <attribute>id_commune</attribute>
+        <attribute>id</attribute>
+        <attribute>id_phase</attribute>
+      </excludeAttributesWMS>
+      <excludeAttributesWFS>
+        <attribute>gid</attribute>
+        <attribute>id_commune</attribute>
+        <attribute>id</attribute>
+        <attribute>id_phase</attribute>
+      </excludeAttributesWFS>
+      <defaults>
+        <default field="gid" expression="" applyOnUpdate="0"/>
+        <default field="id" expression="" applyOnUpdate="0"/>
+        <default field="statut" expression="" applyOnUpdate="0"/>
+        <default field="type" expression="" applyOnUpdate="0"/>
+        <default field="nom" expression="" applyOnUpdate="0"/>
+        <default field="adresse" expression="" applyOnUpdate="0"/>
+        <default field="insee" expression="" applyOnUpdate="0"/>
+        <default field="commune" expression="" applyOnUpdate="0"/>
+        <default field="source" expression="" applyOnUpdate="0"/>
+        <default field="evaluation" expression="" applyOnUpdate="0"/>
+        <default field="debit" expression="" applyOnUpdate="0"/>
+        <default field="id_commune" expression="" applyOnUpdate="0"/>
+        <default field="id_phase" expression="" applyOnUpdate="0"/>
+      </defaults>
+      <constraints>
+        <constraint constraints="3" notnull_strength="1" field="gid" unique_strength="1" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="id" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="statut" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="type" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="nom" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="adresse" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="insee" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="commune" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="source" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="evaluation" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="debit" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="id_commune" unique_strength="0" exp_strength="0"/>
+        <constraint constraints="0" notnull_strength="0" field="id_phase" unique_strength="0" exp_strength="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint field="gid" desc="" exp=""/>
+        <constraint field="id" desc="" exp=""/>
+        <constraint field="statut" desc="" exp=""/>
+        <constraint field="type" desc="" exp=""/>
+        <constraint field="nom" desc="" exp=""/>
+        <constraint field="adresse" desc="" exp=""/>
+        <constraint field="insee" desc="" exp=""/>
+        <constraint field="commune" desc="" exp=""/>
+        <constraint field="source" desc="" exp=""/>
+        <constraint field="evaluation" desc="" exp=""/>
+        <constraint field="debit" desc="" exp=""/>
+        <constraint field="id_commune" desc="" exp=""/>
+        <constraint field="id_phase" desc="" exp=""/>
+      </constraintExpressions>
+      <expressionfields/>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortExpression="" actionWidgetStyle="dropDown" sortOrder="0">
+        <columns>
+          <column type="field" width="-1" name="gid" hidden="0"/>
+          <column type="field" width="-1" name="id" hidden="0"/>
+          <column type="field" width="-1" name="statut" hidden="0"/>
+          <column type="field" width="-1" name="type" hidden="0"/>
+          <column type="field" width="-1" name="nom" hidden="0"/>
+          <column type="field" width="-1" name="adresse" hidden="0"/>
+          <column type="field" width="-1" name="insee" hidden="0"/>
+          <column type="field" width="-1" name="commune" hidden="0"/>
+          <column type="field" width="-1" name="source" hidden="0"/>
+          <column type="field" width="-1" name="evaluation" hidden="0"/>
+          <column type="field" width="-1" name="debit" hidden="0"/>
+          <column type="field" width="-1" name="id_commune" hidden="0"/>
+          <column type="field" width="-1" name="id_phase" hidden="0"/>
+          <column type="actions" width="-1" hidden="1"/>
+        </columns>
+      </attributetableconfig>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <editform tolerant="1">.</editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath>.</editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+Les formulaires QGIS peuvent avoir une fonction Python qui sera appelée à l'ouverture du formulaire.
+
+Utilisez cette fonction pour ajouter plus de fonctionnalités à vos formulaires.
+
+Entrez le nom de la fonction dans le champ "Fonction d'initialisation Python".
+Voici un exemple à suivre:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+    geom = feature.geometry()
+    control = dialog.findChild(QWidget, "MyLineEdit")
+
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable>
+        <field name="adresse" editable="1"/>
+        <field name="commune" editable="1"/>
+        <field name="debit" editable="1"/>
+        <field name="evaluation" editable="1"/>
+        <field name="gid" editable="1"/>
+        <field name="id" editable="1"/>
+        <field name="id_commune" editable="1"/>
+        <field name="id_phase" editable="1"/>
+        <field name="insee" editable="1"/>
+        <field name="nom" editable="1"/>
+        <field name="source" editable="1"/>
+        <field name="statut" editable="1"/>
+        <field name="type" editable="1"/>
+      </editable>
+      <labelOnTop>
+        <field labelOnTop="0" name="adresse"/>
+        <field labelOnTop="0" name="commune"/>
+        <field labelOnTop="0" name="debit"/>
+        <field labelOnTop="0" name="evaluation"/>
+        <field labelOnTop="0" name="gid"/>
+        <field labelOnTop="0" name="id"/>
+        <field labelOnTop="0" name="id_commune"/>
+        <field labelOnTop="0" name="id_phase"/>
+        <field labelOnTop="0" name="insee"/>
+        <field labelOnTop="0" name="nom"/>
+        <field labelOnTop="0" name="source"/>
+        <field labelOnTop="0" name="statut"/>
+        <field labelOnTop="0" name="type"/>
+      </labelOnTop>
+      <widgets/>
+      <previewExpression>gid</previewExpression>
+      <mapTip/>
+    </maplayer></projectlayers>
+  <layerorder/>
+  <properties>
+    <SpatialRefSys>
+      <ProjectionsEnabled type="int">1</ProjectionsEnabled>
+    </SpatialRefSys>
+    <Gui>
+      <CanvasColorGreenPart type="int">255</CanvasColorGreenPart>
+      <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
+      <SelectionColorRedPart type="int">255</SelectionColorRedPart>
+      <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
+      <SelectionColorBluePart type="int">0</SelectionColorBluePart>
+      <CanvasColorBluePart type="int">255</CanvasColorBluePart>
+      <CanvasColorRedPart type="int">255</CanvasColorRedPart>
+    </Gui>
+    <Measurement>
+      <AreaUnits type="QString">m2</AreaUnits>
+      <DistanceUnits type="QString">meters</DistanceUnits>
+    </Measurement>
+    <Measure>
+      <Ellipsoid type="QString">WGS84</Ellipsoid>
+    </Measure>
+    <Legend>
+      <filterByMap type="bool">false</filterByMap>
+    </Legend>
+    <PAL>
+      <SearchMethod type="int">0</SearchMethod>
+      <CandidatesPoint type="int">16</CandidatesPoint>
+      <CandidatesPolygon type="int">30</CandidatesPolygon>
+      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
+      <ShowingAllLabels type="bool">false</ShowingAllLabels>
+      <TextFormat type="int">0</TextFormat>
+      <CandidatesLine type="int">50</CandidatesLine>
+      <ShowingCandidates type="bool">false</ShowingCandidates>
+      <DrawRectOnly type="bool">false</DrawRectOnly>
+    </PAL>
+    <PositionPrecision>
+      <Automatic type="bool">true</Automatic>
+      <DecimalPlaces type="int">2</DecimalPlaces>
+    </PositionPrecision>
+    <Paths>
+      <Absolute type="bool">false</Absolute>
+    </Paths>
+  </properties>
+  <visibility-presets/>
+  <transformContext/>
+  <projectMetadata>
+    <identifier/>
+    <parentidentifier/>
+    <language/>
+    <type/>
+    <title/>
+    <abstract/>
+    <links/>
+    <author>JOSEPH VINCENT</author>
+    <creation>2019-12-12T11:02:49</creation>
+  </projectMetadata>
+  <Annotations/>
+  <Layouts/>
+<layer-tree-group><layer-tree-layer id="sdan_site20190322160323376" name="Sites strat&#xE9;giques"><customproperties/></layer-tree-layer></layer-tree-group></qgis>

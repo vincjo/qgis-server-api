@@ -1,0 +1,16 @@
+.DS_Store
+node_modules
+application/public/bundle.*
+manager/public/bundle.*
+*.db
+*.sqlite
+*.mounted
+!.empty
+api/maps/*
+api/public/files/*
+api/public/images/*
+!api/public/images/logo.svg
+!template.*
+vendor
+.vscode
+.env

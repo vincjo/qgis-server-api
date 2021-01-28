@@ -1,0 +1,2570 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "QGIS Server API",
+        "version": ""
+    },
+    "servers": [
+        {
+            "url": "https://vincjo.fr/qgis-server-api",
+            "description": "vincjo.fr"
+        },
+        {
+            "url": "http://localhost/qgis-server-api/",
+            "description": "localhost"
+        }
+    ],
+    "paths": {
+        "/basemaps": {
+            "get": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Return basemaps's collections : 'displayed', 'stored' and 'overlayed'",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/basemaps/{collection}": {
+            "get": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Return basemaps's collection",
+                "parameters": [
+                    {
+                        "name": "collection",
+                        "in": "path",
+                        "description": "'displayed', 'stored', 'overlayed'",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/basemaps/{id}": {
+            "put": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Update a basemap",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Updated basemap"
+                                    },
+                                    "attributions": {
+                                        "type": "string",
+                                        "example": "HTML link to my provider"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Delete a basemap",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Basemap ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/basemaps/{id}/collection/{collection}": {
+            "put": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Move a basemap from a collection to another one",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Basemap ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "collection",
+                        "in": "path",
+                        "description": "'displayed', 'stored', 'overlayed'",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/basemaps/reorder/from-array": {
+            "put": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Redefines basemaps's order within a collection",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/basemaps/{id}/main": {
+            "put": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Set the default basemap",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Basemap ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/basemaps/{id}/preview": {
+            "put": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Create basemap's preview from a base64 PNG",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Basemap ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "text/plain": {
+                            "schema": {
+                                "description": "Base64 PNG created from browser",
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/basemaps/{id}/overlays": {
+            "put": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Add an overlay over the basemap",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Basemap ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Place names"
+                                    },
+                                    "icon": {
+                                        "type": "string",
+                                        "example": "location"
+                                    },
+                                    "basemap_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "6"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Return overlay"
+                    }
+                }
+            }
+        },
+        "/basemaps/{id}/overlays/{index}": {
+            "delete": {
+                "tags": [
+                    "Basemaps"
+                ],
+                "summary": "Delete an overlay",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Basemap ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "index",
+                        "in": "path",
+                        "description": "Overlay index",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/datasources": {
+            "get": {
+                "tags": [
+                    "Datasources"
+                ],
+                "summary": "Return datasources",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Datasources"
+                ],
+                "summary": "Save a new DB connection",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "provider": {
+                                        "type": "string",
+                                        "example": "postgres"
+                                    },
+                                    "host": {
+                                        "type": "string",
+                                        "example": "localhost"
+                                    },
+                                    "port": {
+                                        "type": "string",
+                                        "example": "5432"
+                                    },
+                                    "dbname": {
+                                        "type": "string",
+                                        "example": "MYDB"
+                                    },
+                                    "user": {
+                                        "type": "string",
+                                        "example": "postgres"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "1234"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/datasources/{id}/connection-test": {
+            "post": {
+                "tags": [
+                    "Datasources"
+                ],
+                "summary": "Connection test",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Datasource ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user": {
+                                        "type": "string",
+                                        "example": "postgres"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "1234"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/datasources/{id}": {
+            "put": {
+                "tags": [
+                    "Datasources"
+                ],
+                "summary": "Save connection settings",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Datasource ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user": {
+                                        "type": "string",
+                                        "example": "postgres"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "1234"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/gis": {
+            "get": {
+                "tags": [
+                    "Gis"
+                ],
+                "summary": "Return GIS tree - folders and layers",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/gis/search/{value}": {
+            "get": {
+                "tags": [
+                    "Gis"
+                ],
+                "summary": "Return layers matching with the search value",
+                "parameters": [
+                    {
+                        "name": "value",
+                        "in": "path",
+                        "description": "searched text",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/gis/folders": {
+            "get": {
+                "tags": [
+                    "Gis"
+                ],
+                "summary": "Returns all folder paths",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Gis"
+                ],
+                "summary": "Create a new folder",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "My new folder"
+                                    },
+                                    "role_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "4"
+                                    },
+                                    "parent_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "0"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/gis/folders/{id}": {
+            "get": {
+                "tags": [
+                    "Gis"
+                ],
+                "summary": "Return a folder",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Folder ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Gis"
+                ],
+                "summary": "Update a folder",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Folder ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Updated folder"
+                                    },
+                                    "role_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "4"
+                                    },
+                                    "parent_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "0"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Gis"
+                ],
+                "summary": "Delete a folder",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Folder ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/gis/folders/reorder/from-array": {
+            "put": {
+                "tags": [
+                    "Gis"
+                ],
+                "summary": "Reorder folders",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/gis/folders/{id}/folder/{parent_id}": {
+            "put": {
+                "tags": [
+                    "Gis"
+                ],
+                "summary": "Move folder into another one",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Folder ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "parent_id",
+                        "in": "path",
+                        "description": "Folder ID of the receiver",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}": {
+            "get": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Return a layer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Update a layer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Updated layer"
+                                    },
+                                    "abstract": {
+                                        "type": "string",
+                                        "example": "All about my layer"
+                                    },
+                                    "source": {
+                                        "type": "string",
+                                        "example": "Created by me last year"
+                                    },
+                                    "role_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "4"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Delete a layer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/datatable": {
+            "get": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Return attribute table",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/datatable/{xmin}/{ymin}/{xmax}/{ymax}/{srid}": {
+            "get": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Returns layer's entities contained in the defined extent as an array",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "xmin",
+                        "in": "path",
+                        "description": "Bounding box xmin",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "ymin",
+                        "in": "path",
+                        "description": "Bounding box ymin",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "xmax",
+                        "in": "path",
+                        "description": "Bounding box xmax",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "ymax",
+                        "in": "path",
+                        "description": "Bounding box ymax",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "srid",
+                        "in": "path",
+                        "description": "Bounding box EPSG",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/extent": {
+            "get": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Return layer's extent with EPSG:3857",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Update layer's extent",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/extent/{identifier}": {
+            "get": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Return entity's extent with EPSG:3857",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "Displayfield value of the layer entity",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/columns": {
+            "get": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Return name, alias, and settings of each column",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Update layer's columns",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "length"
+                                        },
+                                        "alias": {
+                                            "type": "string",
+                                            "example": "Length"
+                                        },
+                                        "excluded": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        },
+                                        "unit": {
+                                            "type": "string",
+                                            "example": "km"
+                                        },
+                                        "numeric": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "displayfield": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/values/{attribute}": {
+            "get": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Return distinct values of an attribute",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "attribute",
+                        "in": "path",
+                        "description": "Attribute name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/export/{format}": {
+            "post": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Return a file in the defined format",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "path",
+                        "description": "File format ('xlsx', 'geojson' or 'shp')",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "extent": {
+                                        "properties": {
+                                            "xmin": {
+                                                "type": "number",
+                                                "example": "418759.225490893"
+                                            },
+                                            "ymin": {
+                                                "type": "number",
+                                                "example": "5814618.81106328"
+                                            },
+                                            "xmax": {
+                                                "type": "number",
+                                                "example": "583827.679562357"
+                                            },
+                                            "ymax": {
+                                                "type": "number",
+                                                "example": "5953894.33199587"
+                                            },
+                                            "srid": {
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": "3857"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/featureinfo/{identifier}": {
+            "get": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Return an entity as geojson",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "Displayfield value of the layer entity",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/featureinfo/{x}/{y}/{zoom}": {
+            "get": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Return an entity as geojson matching with the position on the map",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "x",
+                        "in": "path",
+                        "description": "X coordinate with EPSG:3857",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "y",
+                        "in": "path",
+                        "description": "Y coordinate with EPSG:3857",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "zoom",
+                        "in": "path",
+                        "description": "Zoom level",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/folder/{folder_id}": {
+            "put": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Move a layer from a folder to another one",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "folder_id",
+                        "in": "path",
+                        "description": "folder ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/project/{project_name}": {
+            "put": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Move a layer from a Qgis project file to another one",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "project_name",
+                        "in": "path",
+                        "description": "Qgis project name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/previews": {
+            "put": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Create layer's preview and symbol",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/layers/{id}/replace/{layer_id}": {
+            "put": {
+                "tags": [
+                    "Layers"
+                ],
+                "summary": "Update a layer from another layer, keeping the identifier and indexing",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "layer_id",
+                        "in": "path",
+                        "description": "Replacement layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/maps/{id}": {
+            "get": {
+                "tags": [
+                    "Maps"
+                ],
+                "summary": "Return a map",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Map ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Maps"
+                ],
+                "summary": "Update a map",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Map ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "My map title"
+                                    },
+                                    "abstract": {
+                                        "type": "string",
+                                        "example": "Description of the map"
+                                    },
+                                    "role_id": {
+                                        "type": "integer",
+                                        "example": "4"
+                                    },
+                                    "extent": {
+                                        "properties": {
+                                            "xmin": {
+                                                "type": "number",
+                                                "example": "418759.225490893"
+                                            },
+                                            "ymin": {
+                                                "type": "number",
+                                                "example": "5814618.81106328"
+                                            },
+                                            "xmax": {
+                                                "type": "number",
+                                                "example": "583827.679562357"
+                                            },
+                                            "ymax": {
+                                                "type": "number",
+                                                "example": "5953894.33199587"
+                                            },
+                                            "srid": {
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": "3857"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "basemap_id": {
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "visible": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    },
+                                    "opacity": {
+                                        "type": "number",
+                                        "example": "0.85"
+                                    },
+                                    "overlays": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "index": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "checked": {
+                                                    "type": "boolean",
+                                                    "example": "false"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Maps"
+                ],
+                "summary": "Delete a map",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Map ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/maps": {
+            "post": {
+                "tags": [
+                    "Maps"
+                ],
+                "summary": "Create a map",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "My map title"
+                                    },
+                                    "abstract": {
+                                        "type": "string",
+                                        "example": "Description of the map"
+                                    },
+                                    "role_id": {
+                                        "type": "integer",
+                                        "example": "4"
+                                    },
+                                    "portal_id": {
+                                        "type": "integer",
+                                        "example": "3"
+                                    },
+                                    "creator": {
+                                        "type": "integer",
+                                        "example": "34"
+                                    },
+                                    "extent": {
+                                        "properties": {
+                                            "xmin": {
+                                                "type": "number",
+                                                "example": "418759.225490893"
+                                            },
+                                            "ymin": {
+                                                "type": "number",
+                                                "example": "5814618.81106328"
+                                            },
+                                            "xmax": {
+                                                "type": "number",
+                                                "example": "583827.679562357"
+                                            },
+                                            "ymax": {
+                                                "type": "number",
+                                                "example": "5953894.33199587"
+                                            },
+                                            "srid": {
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": "3857"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "basemap_id": {
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "visible": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    },
+                                    "opacity": {
+                                        "type": "number",
+                                        "example": "0.85"
+                                    },
+                                    "overlays": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "index": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "checked": {
+                                                    "type": "boolean",
+                                                    "example": "false"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "layers": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "layer_id": {
+                                                    "type": "integer",
+                                                    "example": "63"
+                                                },
+                                                "opacity": {
+                                                    "type": "number",
+                                                    "example": "0.57"
+                                                },
+                                                "visible": {
+                                                    "type": "boolean",
+                                                    "example": "true"
+                                                },
+                                                "filter": {
+                                                    "type": "string",
+                                                    "example": "length > '190'"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/maps/{id}/portal/{portal_id}": {
+            "put": {
+                "tags": [
+                    "Maps"
+                ],
+                "summary": "Move a map from a portal to another one",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Map ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "portal_id",
+                        "in": "path",
+                        "description": "Portal ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/maps/reorder/from-array": {
+            "put": {
+                "tags": [
+                    "Maps"
+                ],
+                "summary": "Redefine order of maps within a portal",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/maps/{id}/preview": {
+            "put": {
+                "tags": [
+                    "Maps"
+                ],
+                "summary": "Create a map preview",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Map ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "example": "http://localhost:5000/?printer=true&mapid=2"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/maps/{id}/views": {
+            "put": {
+                "tags": [
+                    "Maps"
+                ],
+                "summary": "Increase the number of map views",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Map ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/maps/export/qgis": {
+            "post": {
+                "tags": [
+                    "Maps"
+                ],
+                "summary": "Export a map to Qgis project",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "My map title"
+                                    },
+                                    "extent": {
+                                        "properties": {
+                                            "xmin": {
+                                                "type": "number",
+                                                "example": "418759.225490893"
+                                            },
+                                            "ymin": {
+                                                "type": "number",
+                                                "example": "5814618.81106328"
+                                            },
+                                            "xmax": {
+                                                "type": "number",
+                                                "example": "583827.679562357"
+                                            },
+                                            "ymax": {
+                                                "type": "number",
+                                                "example": "5953894.33199587"
+                                            },
+                                            "srid": {
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": "3857"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "basemap_id": {
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "visible": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    },
+                                    "opacity": {
+                                        "type": "number",
+                                        "example": "0.85"
+                                    },
+                                    "overlays": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "index": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "checked": {
+                                                    "type": "boolean",
+                                                    "example": "false"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "layers": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "layer_id": {
+                                                    "type": "integer",
+                                                    "example": "63"
+                                                },
+                                                "opacity": {
+                                                    "type": "number",
+                                                    "example": "0.57"
+                                                },
+                                                "visible": {
+                                                    "type": "boolean",
+                                                    "example": "true"
+                                                },
+                                                "filter": {
+                                                    "type": "string",
+                                                    "example": "length > '190'"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/permalinks/{token}": {
+            "get": {
+                "tags": [
+                    "Permalinks"
+                ],
+                "summary": "Return a map",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "Permlink token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Permalinks"
+                ],
+                "summary": "Save a map as a permalink",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "Permlink token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "extent": {
+                                        "properties": {
+                                            "xmin": {
+                                                "type": "number",
+                                                "example": "418759.225490893"
+                                            },
+                                            "ymin": {
+                                                "type": "number",
+                                                "example": "5814618.81106328"
+                                            },
+                                            "xmax": {
+                                                "type": "number",
+                                                "example": "583827.679562357"
+                                            },
+                                            "ymax": {
+                                                "type": "number",
+                                                "example": "5953894.33199587"
+                                            },
+                                            "srid": {
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": "3857"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "basemap_id": {
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "visible": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    },
+                                    "opacity": {
+                                        "type": "number",
+                                        "example": "0.85"
+                                    },
+                                    "overlays": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "checked": {
+                                                    "type": "boolean",
+                                                    "example": "false"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "layers": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "layer_id": {
+                                                    "type": "integer",
+                                                    "example": "45"
+                                                },
+                                                "opacity": {
+                                                    "type": "number",
+                                                    "example": "0.57"
+                                                },
+                                                "visible": {
+                                                    "type": "boolean",
+                                                    "example": "true"
+                                                },
+                                                "filter": {
+                                                    "type": "string",
+                                                    "example": "length > '190'"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "layer_name"
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Layer Name"
+                                                },
+                                                "alias": {
+                                                    "type": "string",
+                                                    "example": "Alias Name"
+                                                },
+                                                "map": {
+                                                    "type": "string",
+                                                    "example": "C:\\server\\www\\sigapp\\api/maps/example.qgs"
+                                                },
+                                                "symbol_url": {
+                                                    "type": "string",
+                                                    "example": "http://localhost/sigapp.api/images/layer_symbol_45.png"
+                                                },
+                                                "symbol_type": {
+                                                    "type": "string",
+                                                    "example": "categorized"
+                                                },
+                                                "preview_url": {
+                                                    "type": "string",
+                                                    "example": "http://localhost/sigapp.api/images/layer_preview_45.png"
+                                                },
+                                                "project_name": {
+                                                    "type": "string",
+                                                    "example": "example"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Return permalink token"
+                    }
+                }
+            }
+        },
+        "/permalinks/{token}/print": {
+            "post": {
+                "tags": [
+                    "Permalinks"
+                ],
+                "summary": "Print a map",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "Permlink token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "example": "http://localhost/sigapp/?printer=true&maptoken=Oek53sb9"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/permalinks/{token}/export": {
+            "post": {
+                "tags": [
+                    "Permalinks"
+                ],
+                "summary": "Print a map",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "Permlink token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "extent": {
+                                        "properties": {
+                                            "xmin": {
+                                                "type": "number",
+                                                "example": "418759.225490893"
+                                            },
+                                            "ymin": {
+                                                "type": "number",
+                                                "example": "5814618.81106328"
+                                            },
+                                            "xmax": {
+                                                "type": "number",
+                                                "example": "583827.679562357"
+                                            },
+                                            "ymax": {
+                                                "type": "number",
+                                                "example": "5953894.33199587"
+                                            },
+                                            "srid": {
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": "3857"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/portals": {
+            "get": {
+                "tags": [
+                    "Portals"
+                ],
+                "summary": "Return portals and maps",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Portals"
+                ],
+                "summary": "Create a new portal",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "My new portal"
+                                    },
+                                    "role_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "4"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/portals/{id}": {
+            "get": {
+                "tags": [
+                    "Portals"
+                ],
+                "summary": "Return a portal with its maps",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Portal ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Portals"
+                ],
+                "summary": "Update portal",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Portal ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "new title"
+                                    },
+                                    "role_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "4"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Portals"
+                ],
+                "summary": "Delete a portal",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Portal ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/portals/reorder/from-array": {
+            "put": {
+                "tags": [
+                    "Portals"
+                ],
+                "summary": "Reorder portals",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Portal ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "in": "path",
+                        "description": "initial order",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "to",
+                        "in": "path",
+                        "description": "target order",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/portals/{id}/owner": {
+            "put": {
+                "tags": [
+                    "Portals"
+                ],
+                "summary": "Define the user portal",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Portal ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/qgis-projects": {
+            "get": {
+                "tags": [
+                    "Qgis Projects"
+                ],
+                "summary": "Return published QGIS Projects with the layers",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Qgis Projects"
+                ],
+                "summary": "Upload and register layers from QGIS project file",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "options": {
+                                        "description": "JSON encoded options",
+                                        "type": "string"
+                                    },
+                                    "file": {
+                                        "description": "QGIS project file .qgs / .qgz / .zip",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/qgis-projects/{name}": {
+            "delete": {
+                "tags": [
+                    "Qgis Projects"
+                ],
+                "summary": "Delete cascade a project file and its layers",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Project name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/qgis-projects/{name}/previews": {
+            "post": {
+                "tags": [
+                    "Qgis Projects"
+                ],
+                "summary": "(Re)generate layers's preview and symbol",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Project name",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/settings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Return settings",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Update settings",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Sigapp"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/settings/logo": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Update logo",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "description": "Image file .png / .svg / .jpg",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/settings/overview/{layer_id}": {
+            "put": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Set overview map and default extent from a reference layer",
+                "parameters": [
+                    {
+                        "name": "layer_id",
+                        "in": "path",
+                        "description": "Layer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "parameters": {
+            "id": {
+                "name": "id",
+                "in": "path",
+                "description": "Datasource ID",
+                "required": true,
+                "schema": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Qgis Projects"
+        },
+        {
+            "name": "Layers"
+        },
+        {
+            "name": "Datasources",
+            "description": "Registered connections to databases"
+        },
+        {
+            "name": "Gis",
+            "description": "Set of thematic directories to organize the layers imported into the application"
+        },
+        {
+            "name": "Basemaps"
+        },
+        {
+            "name": "Maps",
+            "description": "Set of layers and a basemap"
+        },
+        {
+            "name": "Permalinks",
+            "description": "Permanent link to a map defined by a unique token"
+        },
+        {
+            "name": "Portals",
+            "description": "A collection of maps"
+        },
+        {
+            "name": "Settings",
+            "description": "General settings"
+        }
+    ]
+}
