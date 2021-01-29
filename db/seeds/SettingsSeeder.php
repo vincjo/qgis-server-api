@@ -12,7 +12,7 @@ class SettingsSeeder extends AbstractSeed
         SettingsModel::create([
             'name'  => 'application',
             'value' => [
-                'name' => 'Sigapp',
+                'name' => 'qgis-server-api',
                 'logo'  => API_URL . 'images/template.logo.svg',
                 'extent' => [
                     'xmin' => -604158.2716,

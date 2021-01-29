@@ -9,12 +9,12 @@ class PortalsSeeder extends AbstractSeed
     {
         Database::init();
         PortalsModel::create([
-            'title' => 'Portail',
+            'title' => 'Portal',
             'sort' => 1,
             'role_id' => 5
         ]);
         PortalsModel::create([
-            'title' => 'Mes cartes',
+            'title' => 'My maps',
             'sort' => 999,
             'owner' => true,
             'role_id' => 5

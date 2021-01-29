@@ -9,8 +9,8 @@ class BasemapsSeeder extends AbstractSeed
     {
         Database::init();
         BasemapsModel::create([
-            'name'  => 'paysage',
-            'title' => 'Paysage',
+            'name'  => 'Voyager',
+            'title' => 'Voyager',
             'service' => 'TMS',
             'attributions' => '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             'url' => 'http://basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png',
@@ -26,7 +26,7 @@ class BasemapsSeeder extends AbstractSeed
                     'layer'      => null,
                     'format'     => null,
                     'style'      => null,
-                    'alias'      => 'Toponymes',
+                    'alias'      => 'Toponyms',
                     'icon'       => 'pin_drop',
                     'position'   => 'top',
                     'basemap_id' => 12
@@ -34,8 +34,8 @@ class BasemapsSeeder extends AbstractSeed
             ],
         ]);
         BasemapsModel::create([
-            'name'  => 'paysage_label',
-            'title' => 'Paysage Label',
+            'name'  => 'voyager_label',
+            'title' => 'Voyager Label',
             'service' => 'TMS',
             'attributions' => '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             'url' => 'https://basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}.png',
